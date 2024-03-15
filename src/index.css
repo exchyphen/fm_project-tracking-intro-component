@@ -5,6 +5,7 @@
   --dark-grayish-blue: hsl(230, 11%, 40%);
   --grayish-blue: hsl(231, 7%, 65%);
   --light-grayish-blue: hsl(207, 33%, 95%);
+  --clr-divider: hsl(204, 12%, 83%);
 
   /* fonts */
   --font-body: "Barlow", sans-serif;
@@ -37,4 +38,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
+  overflow: hidden;
 }

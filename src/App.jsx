@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+
+/* images */
+import Logo from "./assets/images/logo.svg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  /* item creation */
+
+  /* dev: build nav item list creator -> if mobile menu, divider is a line */
+
+  /* initial load */
+  useEffect(() => {
+    const resize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", resize);
+
+    return () => window.removeEventListener("resize", resize);
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+      <div className="bg"></div>
+
+      <nav className="nav">
+        <img className="nav__logo" src={Logo} alt="logo"></img>
+        <div className="nav__right-container"></div>
+      </nav>
+
+      <main>
+        <article></article>
+      </main>
+
+      <footer>
+        <p className="attribution">
+          Challenge by{" "}
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+            Frontend Mentor
+          </a>
+          . Coded by{" "}
+          <a href="https://github.com/exchyphen/" target="_blank">
+            exc
+          </a>
+          .
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

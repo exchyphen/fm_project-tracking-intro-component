@@ -4,10 +4,13 @@ import "./App.css";
 /* images */
 import Logo from "./assets/images/logo.svg";
 import Hero from "./assets/images/illustration-devices.svg";
+import MenuOpen from "./assets/images/icon-hamburger.svg";
+import MenuClose from "./assets/images/icon-close.svg";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const mobileBreakpoint = 800;
+  const [menuState, setMenuState] = useState(false);
+  const mobileBreakpoint = 650;
 
   /* data */
   const data__navItems = [
@@ -73,11 +76,32 @@ function App() {
 
   return (
     <>
+      {windowWidth <= mobileBreakpoint && menuState ? (
+        <div className="nav__modal">{create__navItems()}</div>
+      ) : null}
       <div className="bg"></div>
 
       <nav className="nav">
         <img className="nav__logo" src={Logo} alt="logo"></img>
-        <div className="nav__content-container">{create__navItems()}</div>
+        <div className="nav__content-container">
+          {windowWidth > mobileBreakpoint ? (
+            create__navItems()
+          ) : menuState ? (
+            <img
+              className="menu__img"
+              src={MenuClose}
+              alt="menu close img"
+              onClick={() => setMenuState(!menuState)}
+            ></img>
+          ) : (
+            <img
+              className="menu__img"
+              src={MenuOpen}
+              alt="menu open img"
+              onClick={() => setMenuState(!menuState)}
+            ></img>
+          )}
+        </div>
       </nav>
 
       <main className="main">
